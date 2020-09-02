@@ -2,7 +2,7 @@ package gr.escsoft.michaelprimez.searchablespinner;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.IdRes;
+import androidx.annotation.IdRes;
 import android.view.View;
 
 /**

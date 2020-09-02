@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 29
     defaultConfig {
         applicationId "gr.escsoft.michaelprimez.searchablespinnerexamples"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
@@ -21,14 +20,15 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.facebook.stetho:stetho:1.4.1'
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:design:26.1.0'
-    compile project(path: ':searchablespinner')
-    compile 'gr.escsoft.michaelprimez.revealedittext:RevealEditText:1.0.2'
-    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    testCompile 'junit:junit:4.12'
+
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.0'
+    implementation project(path: ':searchablespinner')
+    implementation 'gr.escsoft.michaelprimez.revealedittext:RevealEditText:1.0.2'
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    testImplementation 'junit:junit:4.13'
 }
