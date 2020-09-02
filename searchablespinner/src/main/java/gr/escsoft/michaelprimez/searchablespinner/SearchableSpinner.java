@@ -9,17 +9,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.annotation.AttrRes;
-import androidx.annotation.ColorInt;
-import androidx.annotation.Dimension;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.Px;
-import androidx.annotation.StyleRes;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.cardview.widget.CardView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -45,6 +34,16 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.Px;
+import androidx.annotation.StyleRes;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.MaterialModule;
@@ -81,8 +80,6 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
     private Context mContext;
     private OnItemSelectedListener mOnItemSelected;
     private SelectedView mCurrSelectedView;
-    private int mScreenHeightPixels;
-    private int mScreenWidthPixels;
 
     /* Attributes */
     private @ColorInt int mRevealViewBackgroundColor;
@@ -202,7 +199,6 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-
         super.onLayout(changed, l, t, r, b);
     }
 
@@ -448,8 +444,8 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
         DisplayMetrics metrics = new DisplayMetrics();
         WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         wm.getDefaultDisplay().getMetrics(metrics);
-        mScreenHeightPixels = metrics.heightPixels;
-        mScreenWidthPixels = metrics.widthPixels;
+        int mScreenHeightPixels = metrics.heightPixels;
+        int mScreenWidthPixels = metrics.widthPixels;
     }
 
     @Override
@@ -676,10 +672,7 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
     public boolean isInsideSearchEditText(MotionEvent event) {
         Rect editTextRect = new Rect();
         mSearchEditText.getHitRect(editTextRect);
-        if (!editTextRect.contains((int)event.getX(), (int)event.getY())) {
-            return false;
-        }
-        return true;
+        return editTextRect.contains((int) event.getX(), (int) event.getY());
     }
 
     public void setStatusListener(IStatusListener statusListener) {
@@ -771,8 +764,8 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
             mEditViewBackgroundColor = in.readInt();
             mEditViewTextColor = in.readInt();
             mDoneEditTintColor = in.readInt();
-            mShowBorders = in.readInt() > 0 ? true : false;
-            mKeepLastSearch = in.readInt() > 0 ? true : false;
+            mShowBorders = in.readInt() > 0;
+            mKeepLastSearch = in.readInt() > 0;
             mRevealEmptyText = in.readString();
             mSearchHintText = in.readString();
             mNoItemsFoundText = in.readString();

@@ -2,8 +2,11 @@ package gr.escsoft.michaelprimez.searchablespinner;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.annotation.IdRes;
 import android.view.View;
+
+import androidx.annotation.IdRes;
+
+import java.util.Objects;
 
 /**
  * Created by michael on 1/14/17.
@@ -53,7 +56,7 @@ public class SelectedView implements Parcelable {
 
         if (mPosition != that.mPosition) return false;
         if (mId != that.mId) return false;
-        return mView != null ? mView.equals(that.mView) : that.mView == null;
+        return Objects.equals(mView, that.mView);
 
     }
 
