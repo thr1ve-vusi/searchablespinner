@@ -15,7 +15,8 @@ import java.util.Objects;
 public class SelectedView implements Parcelable {
     private View mView;
     private int mPosition;
-    private @IdRes long mId;
+    private @IdRes
+    long mId;
 
     public SelectedView(View view, int position, @IdRes long id) {
         mView = view;

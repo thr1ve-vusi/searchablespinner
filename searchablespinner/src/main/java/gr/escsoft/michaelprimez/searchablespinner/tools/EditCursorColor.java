@@ -3,9 +3,10 @@ package gr.escsoft.michaelprimez.searchablespinner.tools;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import java.lang.reflect.Field;
 
@@ -28,15 +29,10 @@ public class EditCursorColor {
             drawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
             final Object drawableFieldOwner;
             final Class<?> drawableFieldClass;
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                drawableFieldOwner = editText;
-                drawableFieldClass = TextView.class;
-            } else {
                 final Field editorField = TextView.class.getDeclaredField("mEditor");
                 editorField.setAccessible(true);
                 drawableFieldOwner = editorField.get(editText);
                 drawableFieldClass = drawableFieldOwner.getClass();
-            }
             final Field drawableField = drawableFieldClass.getDeclaredField("mCursorDrawable");
             drawableField.setAccessible(true);
             drawableField.set(drawableFieldOwner, new Drawable[] {drawable, drawable});
@@ -45,10 +41,6 @@ public class EditCursorColor {
     }
 
     private static Drawable getDrawable(Context context, int id) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            return context.getResources().getDrawable(id);
-        } else {
-            return context.getDrawable(id);
-        }
+            return ContextCompat.getDrawable(context, id);
     }
 }

@@ -82,16 +82,25 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
     private SelectedView mCurrSelectedView;
 
     /* Attributes */
-    private @ColorInt int mRevealViewBackgroundColor;
-    private @ColorInt int mStartEditTintColor;
-    private @ColorInt int mEditViewBackgroundColor;
-    private @ColorInt int mEditViewTextColor;
-    private @ColorInt int mDoneEditTintColor;
-    private @ColorInt int mBoarderColor;
+    private @ColorInt
+    int mRevealViewBackgroundColor;
+    private @ColorInt
+    int mStartEditTintColor;
+    private @ColorInt
+    int mEditViewBackgroundColor;
+    private @ColorInt
+    int mEditViewTextColor;
+    private @ColorInt
+    int mDoneEditTintColor;
+    private @ColorInt
+    int mBoarderColor;
     private Drawable mListItemDivider;
-    private @Px int mBordersSize;
-    private @Px int mExpandSize;
-    private @Px int mListDividerSize;
+    private @Px
+    int mBordersSize;
+    private @Px
+    int mExpandSize;
+    private @Px
+    int mListDividerSize;
     private boolean mShowBorders;
     private boolean mKeepLastSearch;
     private String mRevealEmptyText;
@@ -191,7 +200,7 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
         mPopupWindow.setWidth(width);
         if (mExpandSize <= 0) {
             mPopupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
-        } else{
+        } else {
             mPopupWindow.setHeight(heightMeasureSpec);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -377,7 +386,7 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            Filterable filterable =  (Filterable) mSpinnerListView.getAdapter();
+            Filterable filterable = (Filterable) mSpinnerListView.getAdapter();
             if (filterable != null)
                 filterable.getFilter().filter(s);
         }
@@ -478,7 +487,7 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
             mStatusListener.spinnerIsOpening();
         final int cx = mRevealContainerCardView.getLeft();
         final int cxr = mRevealContainerCardView.getRight();
-        final int cy = (mRevealContainerCardView.getTop() + mRevealContainerCardView.getHeight())/2;
+        final int cy = (mRevealContainerCardView.getTop() + mRevealContainerCardView.getHeight()) / 2;
         final int reverse_startradius = Math.max(mRevealContainerCardView.getWidth(), mRevealContainerCardView.getHeight());
         final int reverse_endradius = 0;
 
@@ -581,7 +590,7 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
             mStatusListener.spinnerIsClosing();
         final int cx = mContainerCardView.getLeft();
         final int cxr = mContainerCardView.getRight();
-        final int cy = (mContainerCardView.getTop() + mContainerCardView.getHeight())/2;
+        final int cy = (mContainerCardView.getTop() + mContainerCardView.getHeight()) / 2;
         final int reverse_startradius = Math.max(mContainerCardView.getWidth(), mContainerCardView.getHeight());
         final int reverse_endradius = 0;
 
@@ -733,14 +742,22 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
     static class SavedState extends BaseSavedState {
         ViewState mViewState;
         int mAnimDuration;
-        @Px int mBordersSize;
-        @Px int mExpandSize;
-        @ColorInt int mBoarderColor;
-        @ColorInt int mRevealViewBackgroundColor;
-        @ColorInt int mStartEditTintColor;
-        @ColorInt int mEditViewBackgroundColor;
-        @ColorInt int mEditViewTextColor;
-        @ColorInt int mDoneEditTintColor;
+        @Px
+        int mBordersSize;
+        @Px
+        int mExpandSize;
+        @ColorInt
+        int mBoarderColor;
+        @ColorInt
+        int mRevealViewBackgroundColor;
+        @ColorInt
+        int mStartEditTintColor;
+        @ColorInt
+        int mEditViewBackgroundColor;
+        @ColorInt
+        int mEditViewTextColor;
+        @ColorInt
+        int mDoneEditTintColor;
         boolean mShowBorders;
         boolean mKeepLastSearch;
         String mRevealEmptyText;
@@ -797,6 +814,7 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }
+
             public SavedState[] newArray(int size) {
                 return new SavedState[size];
             }
