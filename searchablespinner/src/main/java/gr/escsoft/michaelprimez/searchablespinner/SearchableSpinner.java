@@ -42,12 +42,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.Px;
 import androidx.annotation.StyleRes;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
-
-import com.joanzapata.iconify.Iconify;
-import com.joanzapata.iconify.fonts.MaterialModule;
-import com.joanzapata.iconify.widget.IconTextView;
 
 import gr.escsoft.michaelprimez.searchablespinner.interfaces.ISpinnerSelectedView;
 import gr.escsoft.michaelprimez.searchablespinner.interfaces.IStatusListener;
@@ -67,11 +64,11 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
     private IStatusListener mStatusListener;
     private CardView mRevealContainerCardView;
     private LinearLayout mRevealItem;
-    private IconTextView mStartSearchImageView;
+    private AppCompatTextView mStartSearchImageView;
 
     private CardView mContainerCardView;
     private AppCompatEditText mSearchEditText;
-    private IconTextView mDoneSearchImageView;
+    private AppCompatTextView mDoneSearchImageView;
     private LinearLayout mSpinnerListContainer;
     private PopupWindow mPopupWindow;
     private ListView mSpinnerListView;
@@ -112,10 +109,6 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
         ShowingRevealedLayout,
         ShowingEditLayout,
         ShowingAnimation
-    }
-
-    static {
-        Iconify.with(new MaterialModule());
     }
 
     public SearchableSpinner(@NonNull Context context) {
@@ -180,11 +173,11 @@ public class SearchableSpinner extends RelativeLayout implements View.OnClickLis
         mRevealContainerCardView = (CardView) findViewById(R.id.CrdVw_RevealContainer);
         mRevealContainerCardView.setOnClickListener(mOnRevelViewClickListener);
         mRevealItem = (LinearLayout) findViewById(R.id.FrmLt_SelectedItem);
-        mStartSearchImageView = (IconTextView) findViewById(R.id.ImgVw_StartSearch);
+        mStartSearchImageView = (AppCompatTextView) findViewById(R.id.ImgVw_StartSearch);
 
         mContainerCardView = (CardView) findViewById(R.id.CrdVw_Container);
         mSearchEditText = (AppCompatEditText) findViewById(R.id.EdtTxt_SearchEditText);
-        mDoneSearchImageView = (IconTextView) findViewById(R.id.ImgVw_DoneSearch);
+        mDoneSearchImageView = (AppCompatTextView) findViewById(R.id.ImgVw_DoneSearch);
         init();
     }
 

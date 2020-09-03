@@ -53,7 +53,7 @@
                         android:layout_height="48dp"
                         android:layout_gravity="end">
 
-                        <com.joanzapata.iconify.widget.IconTextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/ImgVw_StartSearch"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -117,7 +117,7 @@
                         android:layout_height="48dp"
                         android:layout_gravity="end">
 
-                        <com.joanzapata.iconify.widget.IconTextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/ImgVw_DoneSearch"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
